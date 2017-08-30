@@ -17,8 +17,8 @@ class App extends Component {
                 <div className="App-header">
                     <h1> Brain Teaser</h1>
                     <h3 style={{fontStyle: 'italic'}}> Boxes of Fruit </h3>
-                    <img src={require('../public/apple.png')} alt="apple"/>
-                    <img src={require('../public/orange.png')} alt="orange"/>
+                    <img src={require('./apple.png')} alt="apple"/>
+                    <img src={require('./orange.png')} alt="orange"/>
                 </div>
                 <Problem/><br/>
                 <Solution/><br/>

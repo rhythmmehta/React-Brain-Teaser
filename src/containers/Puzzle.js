@@ -170,22 +170,22 @@ class Puzzle extends React.Component{
                             {this.state.random === 1 ? <div className="Output">
                                   {' '}YOU SELECTED THE BOX LABELLED <br />"{this.state.name}".
                                   <br />
-                                  <br />FRUIT REVEALED:<br /> <br /> "Orange"<img src={require('../../public/orange.png')} alt=""/>
+                                  <br />FRUIT REVEALED:<br /> <br /> "Orange"<img src={require('../orange.png')} alt=""/>
                                 </div> : <div className="Output">
                                   {' '}YOU SELECTED THE BOX LABELLED <br />"{this.state.name}".
                                   <br />
-                                  <br />FRUIT REVEALED:<br /> <br /> "Apple"<img src={require('../../public/apple.png')} alt=""/>
+                                  <br />FRUIT REVEALED:<br /> <br /> "Apple"<img src={require('../apple.png')} alt=""/>
                                 </div>}
                           </div>}
                         {this.state.trueValue === 'Oranges' && <div className="Output">
                             {' '}YOU SELECTED THE BOX LABELLED <br />"{this.state.name}".
                             <br />
-                            <br />FRUIT REVEALED:<br /> <br />"{this.state.trueValue}"<img src={require('../../public/orange.png')} alt=""/>
+                            <br />FRUIT REVEALED:<br /> <br />"{this.state.trueValue}"<img src={require('../orange.png')} alt=""/>
                           </div>}
                         {this.state.trueValue === 'Apples' && <div className="Output">
                             {' '}YOU SELECTED THE BOX LABELLED <br />"{this.state.name}".
                             <br />
-                            <br />FRUIT REVEALED:<br /> <br />"{this.state.trueValue}"<img src={require('../../public/apple.png')} alt=""/>
+                            <br />FRUIT REVEALED:<br /> <br />"{this.state.trueValue}"<img src={require('../public/apple.png')} alt=""/>
                           </div>}
                       </div> : null}
                 </div>
