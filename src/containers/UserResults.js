@@ -15,7 +15,7 @@ export class UserResults extends Component {
     };
 
     render() {
-        let res = this.props.search.result;
+        let res = this.props.results.result;
         let details;
         if(res){
              details = res.map((item,index)=>{

@@ -8,19 +8,18 @@ import Oranges from './Oranges';
 import Apples from './Apples';
 import Mixed from './Mixed';
 import Box from './Box';
-import {init as firebaseInit} from '../firebaseConfig'
+import { Link } from 'react-router-dom';
 
 import * as toasterActions from '../store/Toaster/actions';
-import * as dataActions from '../store/Database/actions';
+import * as submitActions from '../store/Submit/actions';
 
 class Puzzle extends React.Component{
     static propTypes = {
     toasterActions: PropTypes.object.isRequired,
-    dataActions: PropTypes.object.isRequired
+    submitActions: PropTypes.object.isRequired
     };
     constructor(props){
         super(props);
-        firebaseInit();
         this.state = {
             name:null,
             trueValue: null,
@@ -100,14 +99,14 @@ class Puzzle extends React.Component{
             if(this.state.applesans==="Apples" && this.state.orangesans==="Oranges" && this.state.mixedans==="Mixed")
             {
                 this.props.toasterActions.show('You  are right!');
-                this.setState({results:'Right', isSubmit: true})
-                this.props.dataActions.storeResults(this.state.email,this.state.applesans,this.state.orangesans,this.state.mixedans,'Right');
+                this.setState({results:'Right', isSubmit: true});
+                this.props.submitActions.storeResults(this.state.email,this.state.applesans,this.state.orangesans,this.state.mixedans,'Right');
             }
             else
             {
                 this.props.toasterActions.show('You  are wrong!');
-                this.setState({results:'Wrong', isSubmit: true})
-                this.props.dataActions.storeResults(this.state.email,this.state.applesans,this.state.orangesans,this.state.mixedans,'Wrong');
+                this.setState({results:'Wrong', isSubmit: true});
+                this.props.submitActions.storeResults(this.state.email,this.state.applesans,this.state.orangesans,this.state.mixedans,'Wrong');
             }
 
         }
@@ -228,8 +227,9 @@ class Puzzle extends React.Component{
 
             {this.state.isSubmit===false ?
                 (<div><button id="SubmitButton" name="submit" onClick={this.handleSubmit}>
-                SUBMIT ANSWER </button></div>) :
-                (<div className="Results">{this.state.results==='Right'? (<div>YOOU ARE RIGHT!</div>) : (<div>YOU ARE WRONG!</div>)}</div>)}
+                SUBMIT ANSWER </button></div>) : null}
+
+                <Link to='/results'>See how everyone else did!</Link>
         </div>;
     }
 }
@@ -240,6 +240,6 @@ export default connect(
     }),
     dispatch => ({
         toasterActions: bindActionCreators(toasterActions, dispatch),
-        dataActions:  bindActionCreators(dataActions, dispatch)
+        submitActions:  bindActionCreators(submitActions, dispatch)
     })
 )(Puzzle);

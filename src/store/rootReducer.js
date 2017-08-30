@@ -4,7 +4,7 @@ import { results } from './Results/reducer';
 import { toaster } from './Toaster/reducer';
 
 const rootReducer = combineReducers({
-    search,
+    submit,
     toaster,
     results
 })
