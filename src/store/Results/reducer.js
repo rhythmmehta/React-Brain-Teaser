@@ -18,7 +18,7 @@ export function results(state = {
         case GET_USERS_SUCCESS:
             return Object.assign({}, state, {
             isFetching: false,
-            result: action.results
+            result: action.result
         })
         case GET_USERS_FAILURE:
             return Object.assign({}, state, {

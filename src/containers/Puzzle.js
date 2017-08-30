@@ -34,7 +34,6 @@ class Puzzle extends React.Component{
             results:null,
             random: null,
             isReset: false,
-            isSubmit: false,
             errors: {
                 email: null,
                 applesans: null,
@@ -103,13 +102,13 @@ class Puzzle extends React.Component{
             if(this.state.applesans==="Apples" && this.state.orangesans==="Oranges" && this.state.mixedans==="Mixed")
             {
                 this.props.toasterActions.show('You  are right!');
-                this.setState({results:'Right', isSubmit: true});
+                this.setState({results:'Right'});
                 this.props.submitActions.storeResults(this.state.email,this.state.applesans,this.state.orangesans,this.state.mixedans,'Right');
             }
             else
             {
                 this.props.toasterActions.show('You  are wrong!');
-                this.setState({results:'Wrong', isSubmit: true});
+                this.setState({results:'Wrong'});
                 this.props.submitActions.storeResults(this.state.email,this.state.applesans,this.state.orangesans,this.state.mixedans,'Wrong');
             }
 
@@ -232,11 +231,11 @@ class Puzzle extends React.Component{
               </div>
             </DragDropContextProvider>
 
-            {this.state.isSubmit===false ?
-                (<div><button id="SubmitButton" name="submit" onClick={this.handleSubmit}>
-                SUBMIT ANSWER </button></div>) : null}
 
-                <Link to='/results'><button onClick={this.printRes}>See how everyone else did!</button></Link>
+            <button id="SubmitButton" name="submit" onClick={this.handleSubmit}>
+                SUBMIT ANSWER </button>
+
+            <Link to='/results'><button className="buttons" onClick={this.printRes}>See how everyone else did!</button></Link>
         </div>;
     }
 }

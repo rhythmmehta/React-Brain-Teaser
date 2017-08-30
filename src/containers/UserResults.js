@@ -14,7 +14,9 @@ export class UserResults extends Component {
         resultActions: PropTypes.object.isRequired,
         results: PropTypes.object.isRequired
     };
-
+    componentWillMount(){
+        this.props.resultActions.getUsersResults();
+    }
     render() {
         let res = this.props.results.result;
         let details;
@@ -28,7 +30,7 @@ export class UserResults extends Component {
         return(
             <div id="container--Results">
                 <Header/>
-                <Link to='/'><button>Back to Puzzle</button></Link>
+                <Link to='/'><button className="buttons">Back to Puzzle</button></Link>
             <h2>Check out other users results!</h2>
             {details}
             </div>
