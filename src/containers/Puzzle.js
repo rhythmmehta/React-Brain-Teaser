@@ -32,6 +32,7 @@ class Puzzle extends React.Component{
             results:null,
             random: null,
             isReset: false,
+            isSubmit: false,
             errors: {
                 email: null,
                 applesans: null,
@@ -99,13 +100,13 @@ class Puzzle extends React.Component{
             if(this.state.applesans==="Apples" && this.state.orangesans==="Oranges" && this.state.mixedans==="Mixed")
             {
                 this.props.toasterActions.show('You  are right!');
-                this.setState({results:'Right'})
+                this.setState({results:'Right', isSubmit: true})
                 this.props.dataActions.storeResults(this.state.email,this.state.applesans,this.state.orangesans,this.state.mixedans,'Right');
             }
             else
             {
                 this.props.toasterActions.show('You  are wrong!');
-                this.setState({results:'Wrong'})
+                this.setState({results:'Wrong', isSubmit: true})
                 this.props.dataActions.storeResults(this.state.email,this.state.applesans,this.state.orangesans,this.state.mixedans,'Wrong');
             }
 
@@ -224,10 +225,12 @@ class Puzzle extends React.Component{
                 <br />
               </div>
             </DragDropContextProvider>
-            <button id="SubmitButton" name="submit" onClick={this.handleSubmit}>
-              SUBMIT ANSWER
-            </button>
-          </div>;
+
+            {this.state.isSubmit===false ?
+                (<div><button id="SubmitButton" name="submit" onClick={this.handleSubmit}>
+                SUBMIT ANSWER </button></div>) :
+                (<div className="Results">{this.state.results==='Right'? (<div>YOOU ARE RIGHT!</div>) : (<div>YOU ARE WRONG!</div>)}</div>)}
+        </div>;
     }
 }
 
