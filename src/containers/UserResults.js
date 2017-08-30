@@ -11,7 +11,8 @@ import * as resultActions from '../store/Results/actions';
 
 export class UserResults extends Component {
     static propTypes = {
-        resultActions: PropTypes.object.isRequired
+        resultActions: PropTypes.object.isRequired,
+        results: PropTypes.object.isRequired
     };
 
     render() {
@@ -20,16 +21,16 @@ export class UserResults extends Component {
         if(res){
              details = res.map((item,index)=>{
             return (<div key={index} className="Display-Results">
-            <p><b>Email:</b>{item.email}</p>
-       <p><b>Result:</b>{item.result}</p>
+            <b>Email:</b>{item.email}
+            <b>Result:</b>{item.result}
        </div>) });
    }
         return(
             <div id="container--Results">
                 <Header/>
-                <Link to='/'>Back to Puzzle</Link>
-                { res.length> 0 ? (<div className="res"><h2>Check out other users results!</h2></div>) : <div className="res">No other results found.</div>}
-{details}
+                <Link to='/'><button>Back to Puzzle</button></Link>
+            <h2>Check out other users results!</h2>
+            {details}
             </div>
         )
     }
@@ -44,3 +45,8 @@ export default connect(
         resultActions: bindActionCreators(resultActions, dispatch),
     })
 )(UserResults);
+
+
+// <p><b>Apples:</b>{item.apples}</p>
+// <p><b>Oranges:</b>{item.oranges}</p>
+// <p><b>Mixed:</b>{item.mixed}</p>

@@ -1,3 +1,5 @@
+import { getUsers } from '../../api/submit';
+
 export const GET_USERS_FETCH='GET_USERS_FETCH';
 export const GET_USERS_SUCCESS='GET_USERS_SUCCESS';
 export const GET_USERS_FAILURE='GET_USERS_FAILURE';
@@ -21,7 +23,7 @@ export function getUsersFailure(message) {
     }
 }
 
-export function getUsers(){
+export function getUsersResults(){
     return async (dispatch, getState) => {
         try{
             dispatch(initiateGetUsers());

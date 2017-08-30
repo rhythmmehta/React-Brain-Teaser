@@ -1,4 +1,4 @@
-import {postResults,getUsers} from '../../api/submit';
+import {postResults} from '../../api/submit';
 
 export const SUBMIT_RESULTS_FETCH='SUBMIT_RESULTS_FETCH';
 export const SUBMIT_RESULTS_SUCCESS='SUBMIT_RESULTS_SUCCESS';

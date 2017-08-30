@@ -12,11 +12,14 @@ import { Link } from 'react-router-dom';
 
 import * as toasterActions from '../store/Toaster/actions';
 import * as submitActions from '../store/Submit/actions';
+import * as resultActions from '../store/Results/actions';
+
 
 class Puzzle extends React.Component{
     static propTypes = {
     toasterActions: PropTypes.object.isRequired,
-    submitActions: PropTypes.object.isRequired
+    submitActions: PropTypes.object.isRequired,
+    resultActions: PropTypes.object.isRequired
     };
     constructor(props){
         super(props);
@@ -45,6 +48,7 @@ class Puzzle extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleReset= this.handleReset.bind(this);
         this.updateReset = this.updateReset.bind(this);
+        this.printRes=this.printRes.bind(this);
     }
 
     handleEmail(evt) {
@@ -127,6 +131,9 @@ class Puzzle extends React.Component{
         })
     }
 
+    printRes(){
+        this.props.resultActions.getUsersResults();
+    }
     render(){
         let clicked=this.state.isClicked;
         let errors=this.state.errors;
@@ -229,7 +236,7 @@ class Puzzle extends React.Component{
                 (<div><button id="SubmitButton" name="submit" onClick={this.handleSubmit}>
                 SUBMIT ANSWER </button></div>) : null}
 
-                <Link to='/results'>See how everyone else did!</Link>
+                <Link to='/results'><button onClick={this.printRes}>See how everyone else did!</button></Link>
         </div>;
     }
 }
@@ -240,6 +247,7 @@ export default connect(
     }),
     dispatch => ({
         toasterActions: bindActionCreators(toasterActions, dispatch),
-        submitActions:  bindActionCreators(submitActions, dispatch)
+        submitActions:  bindActionCreators(submitActions, dispatch),
+        resultActions:  bindActionCreators(resultActions, dispatch)
     })
 )(Puzzle);
