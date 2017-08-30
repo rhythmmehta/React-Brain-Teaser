@@ -8,6 +8,7 @@ import Oranges from './Oranges';
 import Apples from './Apples';
 import Mixed from './Mixed';
 import Box from './Box';
+import {init as firebaseInit} from '../firebaseConfig'
 
 import * as toasterActions from '../store/Toaster/actions';
 import * as dataActions from '../store/Database/actions';
@@ -19,6 +20,7 @@ class Puzzle extends React.Component{
     };
     constructor(props){
         super(props);
+        firebaseInit();
         this.state = {
             name:null,
             trueValue: null,
