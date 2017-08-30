@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
+import Header from './components/Header';
 import Puzzle from './containers/Puzzle';
 import Problem from './components/Problem';
 import Solution from './components/Solution';
 import Toaster from './components/Toaster';
+
 
 class App extends Component {
     render(){
@@ -14,12 +16,7 @@ class App extends Component {
         }
         return (
             <div className="App">
-                <div className="App-header">
-                    <h1> Brain Teaser</h1>
-                    <h3 style={{fontStyle: 'italic'}}> Boxes of Fruit </h3>
-                    <img src={require('./apple.png')} alt="apple"/>
-                    <img src={require('./orange.png')} alt="orange"/>
-                </div>
+                <Header/><br/>
                 <Problem/><br/>
                 <Solution/><br/>
                 {toaster}
