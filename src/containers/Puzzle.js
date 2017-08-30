@@ -183,7 +183,7 @@ class Puzzle extends React.Component{
                         {this.state.trueValue === 'Apples' && <div className="Output">
                             {' '}YOU SELECTED THE BOX LABELLED <br />"{this.state.name}".
                             <br />
-                            <br />FRUIT REVEALED:<br /> <br />"{this.state.trueValue}"<img src={require('../public/apple.png')} alt=""/>
+                            <br />FRUIT REVEALED:<br /> <br />"{this.state.trueValue}"<img src={require('../apple.png')} alt=""/>
                           </div>}
                       </div> : null}
                 </div>
